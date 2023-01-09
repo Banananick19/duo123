@@ -47,6 +47,13 @@ fun WiFiConnectScreen(viewModel: ClientViewModel, navController: NavController) 
         viewModel.clientState.set(ClientState.ClientConnected(ClientWiFi as Client<ConnectionDescription>))
         navController.navigate(route = "controller")
     }
+    if (ClientWiFi.isConnect()) {
+        Row(modifier = Modifier.padding(40.dp, 40.dp), horizontalArrangement = Arrangement.Center) {
+            Button({navController.navigate(route = "controller")}) {
+                Text("Использовать существующее подключение")
+            }
+        }
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),
